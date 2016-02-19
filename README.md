@@ -91,7 +91,28 @@ How to?
 
 Options
 ------------
+```js
+{
+    /**
+     * @param timer - int, the time to wait before fire the next rotation
+     */
+    timer: '2200',
+    /**
+     * @param activeClass - string, the css class of the current active element.
+     */
+    activeClass: 'active'
+}
+```
 
+
+
+
+
+Methods
+-------------
+
+- freeze: to pause the rotation of items
+- unfreeze: to resume the rotation of items
 
 
 
@@ -116,6 +137,10 @@ Then with help of css, you build on that fact to achieve the desired effect.
  
 History Log
 ------------------
+    
+- 1.1.0 -- 2016-02-19
+
+    - add freeze/unfreeze methods
     
 - 1.0.0 -- 2016-02-18
 

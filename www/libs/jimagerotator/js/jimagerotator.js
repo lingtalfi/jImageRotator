@@ -21,10 +21,19 @@
         plugin.settings = {};
 
         var $el = $(element);
+        var isFrozen = false;
+
 
         plugin.init = function () {
             plugin.settings = $.extend({}, defaults, options);
             rotate($el);
+        };
+
+        plugin.freeze = function () {
+            isFrozen = true;
+        };
+        plugin.unfreeze = function () {
+            isFrozen = false;
         };
 
         function doRotateImages(jNewActive, jOldActive) {
@@ -33,22 +42,25 @@
         }
 
         function rotateImages(jImages) {
-            setTimeout(function () {
-                var jActive;
-                jImages.each(function () {
-                    if ($(this).hasClass(plugin.settings.activeClass)) {
-                        jActive = $(this);
+            if (false === isFrozen) {
+
+                setTimeout(function () {
+                    var jActive;
+                    jImages.each(function () {
+                        if ($(this).hasClass(plugin.settings.activeClass)) {
+                            jActive = $(this);
+                        }
+                    });
+                    if (jActive.length) {
+                        var jNext = jActive.next();
+                        if (jNext.length === 0) {
+                            jNext = jImages.first();
+                        }
+                        doRotateImages(jNext, jActive);
+                        rotateImages(jImages);
                     }
-                });
-                if (jActive.length) {
-                    var jNext = jActive.next();
-                    if (jNext.length === 0) {
-                        jNext = jImages.first();
-                    }
-                    doRotateImages(jNext, jActive);
-                    rotateImages(jImages);
-                }
-            }, plugin.settings.timer);
+                }, plugin.settings.timer);
+            }
         }
 
         function rotate(jContainer) {
