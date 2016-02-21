@@ -22,6 +22,8 @@
 
         var $el = $(element);
         var isFrozen = false;
+        var jItems;
+        var timer;
 
 
         plugin.init = function () {
@@ -31,9 +33,13 @@
 
         plugin.freeze = function () {
             isFrozen = true;
+            if(null !== timer){
+                clearTimeout(timer);
+            }
         };
         plugin.unfreeze = function () {
             isFrozen = false;
+            rotateImages(jItems);
         };
 
         function doRotateImages(jNewActive, jOldActive) {
@@ -44,14 +50,14 @@
         function rotateImages(jImages) {
             if (false === isFrozen) {
 
-                setTimeout(function () {
+                timer = setTimeout(function () {
                     var jActive;
                     jImages.each(function () {
                         if ($(this).hasClass(plugin.settings.activeClass)) {
                             jActive = $(this);
                         }
                     });
-                    if (jActive.length) {
+                    if (jActive && jActive.length) {
                         var jNext = jActive.next();
                         if (jNext.length === 0) {
                             jNext = jImages.first();
@@ -64,7 +70,7 @@
         }
 
         function rotate(jContainer) {
-            var jItems = jContainer.find('>');
+            jItems = jContainer.find('>');
             if (jItems.length > 1) {
                 jItems.first().addClass(plugin.settings.activeClass);
                 rotateImages(jItems);

@@ -138,6 +138,11 @@ Then with help of css, you build on that fact to achieve the desired effect.
 History Log
 ------------------
     
+- 1.1.1 -- 2016-02-20
+
+    - fix unfreeze not working
+    - add double checking on an if block to avoid warning
+    
 - 1.1.0 -- 2016-02-19
 
     - add freeze/unfreeze methods
