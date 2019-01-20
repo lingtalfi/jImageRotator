@@ -9,7 +9,7 @@ simple image rotator for jquery.
 
 
 
-![image rotator](http://s19.postimg.org/h4fdmvieb/imagerotator.gif)
+![image rotator](http://lingtalfi.com/img/universe/JImageRotator/imagerotator.gif)
 
 
 JImageRotator is part of the [universe framework](https://github.com/karayabin/universe-snapshot).
