@@ -21,7 +21,7 @@ Install
 
 Using the [uni tool](https://github.com/lingtalfi/universe-naive-importer)
 ```bash
-uni import JImageRotator
+uni import Ling/JImageRotator
 ```
 
 
